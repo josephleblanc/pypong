@@ -1,5 +1,9 @@
-# Example file showing a circle moving on screen
+# This game was made in part by following the tutorial to create a pong game
+# using pygame at:
+# https://www.101computing.net/pong-tutorial-using-pygame-getting-started/
+
 import pygame
+from objects.paddle import Paddle
 
 # pygame setup
 pygame.init()
@@ -18,19 +22,11 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    screen.fill("black")
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        player_pos.y -= 300 * dt
-    if keys[pygame.K_s]:
-        player_pos.y += 300 * dt
-    if keys[pygame.K_a]:
-        player_pos.x -= 300 * dt
-    if keys[pygame.K_d]:
-        player_pos.x += 300 * dt
+    # draw net, the vertical bar throught the center of the screen
+    pygame.draw.line(screen, "white", [screen.get_width() / 2, 0],
+                     [screen.get_width() / 2, screen.get_height() ], 5)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
